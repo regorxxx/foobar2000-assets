@@ -11,4 +11,7 @@ PC:
 
 Android:
 1. Install 'foobar2000 controller PRO_0.9.4.0a.apk'. Some Android devices may require to enable external sources or other permission related settings changes.
-2. Add server using settings from PC installation step 3.
+2. Add new server using settings from PC installation step 4 and connect to it.
+
+Further support may be found here: (don't ask me about help, I'm just sharing the files)
+http://foobar2000controller.blogspot.com/p/how-to-start.html
