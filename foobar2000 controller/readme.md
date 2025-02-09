@@ -3,7 +3,7 @@ Installation requires both PC and Phone steps.
 PC: 
 1. Choose either the original method (2a) (files as provided by original dev) or new method (3b) (with updated components + fixes).
 2. (a) Go to 'PC_original_installation_2.0.1' folder and install 'foobar2000 controller [PC-side setup] v2.0.1.exe'. Decompressed files are also provided in case someone wants to manually install them (i.e. copy them into the profile folder).
-3. (b) Go to 'PC_new_installation_2.0.1' and install 'foo_httpcontrol_0_97_29.fb2k-component' into foobar2000. Copy 'foo_httpcontrol_data' subfolder into foobar2000 profile folder (so new template will be added to the default templates folder).
+3. (b) Go to [foo_httpcontrol_fb2kc](https://github.com/regorxxx/foo_httpcontrol_fb2kc), download the component and install it into foobar2000. Look at the readme for detailed instructions to install the bundled templates.
 3. Set server settings as desired within foobar2000 preferences panel.
 
 ![readme](https://github.com/regorxxx/foobar2000-assets/assets/83307074/88b30293-aaf0-44cb-9379-1c62f608fa58)
