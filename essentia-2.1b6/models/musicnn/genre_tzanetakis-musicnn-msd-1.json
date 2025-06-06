@@ -1,0 +1,96 @@
+{
+    "name": "genre GTZAN",
+    "type": "multi-class classifier",
+    "link": "https://essentia.upf.edu/models/classifiers/genre_tzanetakis/genre_tzanetakis-musicnn-msd-1.pb",
+    "version": "1",
+    "description": "classification of music by genre",
+    "author": "Pablo Alonso",
+    "email": "pablo.alonso@upf.edu",
+    "release_date": "2020-03-31",
+    "framework": "tensorflow",
+    "framework_version": "1.15.0",
+    "classes": [
+        "blu",
+        "cla",
+        "cou",
+        "dis",
+        "hip",
+        "jaz",
+        "met",
+        "pop",
+        "reg",
+        "roc"
+    ],
+    "model_types": [
+        "frozen_model"
+    ],
+    "dataset": {
+        "name": "the GTZAN Genre Collection",
+        "citation": "@article{tzanetakis2002musical,\n  title={Musical genre classification of audio signals},\n  author={Tzanetakis, George and Cook, Perry},\n  journal={IEEE Transactions on speech and audio processing},\n  volume={10},\n  number={5},\n  pages={293--302},\n  year={2002},\n  publisher={IEEE}\n}",
+        "size": "1000 track excerpts, 100 per genre",
+        "metrics": {
+            "5-fold_cross_validation_normalized_accuracy": 0.83
+        }
+    },
+    "schema": {
+        "inputs": [
+            {
+                "name": "model/Placeholder",
+                "type": "float",
+                "shape": [
+                    187,
+                    96
+                ]
+            }
+        ],
+        "outputs": [
+            {
+                "name": "model/Sigmoid",
+                "type": "float",
+                "shape": [
+                    1,
+                    10
+                ],
+                "op": "Sigmoid",
+                "output_purpose": "predictions"
+            },
+            {
+                "name": "model/dense_2/BiasAdd",
+                "type": "float",
+                "shape": [
+                    1,
+                    10
+                ],
+                "op": "fully connected",
+                "description": "logits",
+                "output_purpose": ""
+            },
+            {
+                "name": "model/dense_1/BiasAdd",
+                "type": "float",
+                "shape": [
+                    1,
+                    100
+                ],
+                "op": "fully connected",
+                "description": "penultimate layer",
+                "output_purpose": ""
+            },
+            {
+                "name": "model/dense/BiasAdd",
+                "type": "float",
+                "shape": [
+                    1,
+                    200
+                ],
+                "op": "fully connected",
+                "output_purpose": "embeddings"
+            }
+        ]
+    },
+    "citation": "@inproceedings{alonso2020tensorflow,\n  title={Tensorflow Audio Models in Essentia},\n  author={Alonso-Jim{\\'e}nez, Pablo and Bogdanov, Dmitry and Pons, Jordi and Serra, Xavier},\n  booktitle={IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},\n  year={2020}\n}",
+    "inference": {
+        "sample_rate": 16000,
+        "algorithm": "TensorflowPredictMusiCNN"
+    }
+}
