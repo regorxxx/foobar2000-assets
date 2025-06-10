@@ -13,7 +13,7 @@ run_models_all.bat note:
 run_tensorflow_models.bat note:
 	Is based on 'streaming_tensorflowpredict.exe' but the input models are currently unknown so it will likely fail.
 
-Models (.pb files) must be downloaded separately and added to 'models\[...]' to appropiate folders.
+TensorFlow models (.pb files) must be downloaded separately and added to 'models\[...]' to appropiate folders.
 musicnn models:
 	https://essentia.upf.edu/models/classifiers/
 	https://essentia.upf.edu/models/feature-extractors/
@@ -28,4 +28,16 @@ vggish models:
 For ex:
 	msd-musicnn-1.pb is downloaded from
 	https://essentia.upf.edu/models/feature-extractors/musicnn/
-	And must be put at 'models\musicnn\msd-musicnn-1.pb'-
+	And must be put at 'models\musicnn\msd-musicnn-1.pb
+
+------------------------------------------------------------download----------------------------------------------------
+All models and these files may also be downloaded from mega at this folder:
+https://mega.nz/folder/NNRTEBgK#Ehq_j0ad6A1BR5TzEKvZVw
+
+There are 4 zip files:
+	- essentia-2.1b6-full-win64.zip		-> All Essentia binaries (*) + tensorflow + models below
+	- essentia-2.1b6-tensorflow-win64.zip	-> Binaries for TensorFlow usage (needs separate models below)
+	- tensorflow_models.zip			-> Models for TensorFlow usage
+	- gaia_models.zip			-> Models for Gaia usage	
+
+(*) The full version includes other kind of executables like 'streaming_key.exe', etc. not related to ML models.
