@@ -5,11 +5,11 @@ IF [%2]==[] goto usage
 goto :runmodels
 
 :runmodels
-CALL run_musicnn_models.bat %1 %2\musicnn
-CALL run_tempocnn_models.bat %1 %2\tempocnn
-CALL run_tensorflow_models.bat %1 %2\tensorflow
-CALL run_vggish_models.bat %1 %2\vggish
-CALL run_svm_models.bat %1 %2\svm
+IF EXIST run_musicnn_models.bat CALL run_musicnn_models.bat %1 %2\musicnn
+IF EXIST run_tempocnn_models.bat CALL run_tempocnn_models.bat %1 %2\tempocnn
+IF EXIST run_tensorflow_models.bat CALL run_tensorflow_models.bat %1 %2\tensorflow
+IF EXIST run_vggish_models.bat CALL run_vggish_models.bat %1 %2\vggish
+IF EXIST run_svm_models.bat CALL run_svm_models.bat %1 %2\svm
 EXIT /B %ERRORLEVEL%
 
 :usage
