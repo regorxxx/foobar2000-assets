@@ -44,8 +44,11 @@ There are 4 zip files:
 	- essentia-<version>-full-win64.zip		-> All Essentia binaries (*) + Tensorflow + Gaia + models below
 	- essentia-<version>-tensorflow-win64.zip	-> Binaries for TensorFlow usage (needs separate models below)
 	- essentia-<version>-gaia-win64.zip		-> Binaries for Gaia usage (needs separate models below)
-	- essentia-<version>-win64.zip		-> Binaries for standard usage (*), without any other dependency.
-	- tensorflow_models.zip			-> Models for TensorFlow usage
-	- gaia_models.zip			-> Models for Gaia usage	
+	- essentia-<version>-win64.zip			-> Binaries for standard usage (*), without any other dependency.
+	- tensorflow_models.zip				-> Models for TensorFlow usage
+	- gaia_models.zip				-> Models for Gaia usage	
 
 (*) The full and standard version includes other kind of executables like 'streaming_key.exe', etc. not related to ML models.
+
+WARNING: the repository at github is missing the tensorflow.dll at 'bin' folder, due to github size limits. Such dll may be found
+either at the mega releases or on TensorFlow site (https://www.tensorflow.org/install/lang_c). Look for CPU-only releases.
