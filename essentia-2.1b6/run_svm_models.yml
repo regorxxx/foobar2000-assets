@@ -1,0 +1,31 @@
+outputFormat: json
+outputFrames: 0
+analysisSampleRate: 44100.0
+lowlevel:
+  frameSize: 2048
+  hopSize: 1024
+rhythm:
+  method: degara
+highlevel:
+  compute: 1
+  svm_models:
+    - models/svm/danceability.history
+    - models/svm/gender.history
+    - models/svm/genre_dortmund.history
+    - models/svm/genre_electronic.history
+    - models/svm/genre_rosamerica.history
+    - models/svm/genre_tzanetakis.history
+    - models/svm/ismir04_rhythm.history
+    - models/svm/mood_acoustic.history
+    - models/svm/mood_aggressive.history
+    - models/svm/mood_electronic.history
+    - models/svm/mood_happy.history
+    - models/svm/mood_party.history
+    - models/svm/mood_relaxed.history
+    - models/svm/mood_sad.history
+    - models/svm/moods_mirex.history
+    - models/svm/timbre.history
+    - models/svm/tonal_atonal.history
+    - models/svm/voice_instrumental.history
+chromaprint:
+  compute: 1

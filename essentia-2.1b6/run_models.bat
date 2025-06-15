@@ -9,9 +9,33 @@ IF [%4]==[%2] (
 	ECHO.
 	goto usage
 )
-REM goto :runmodels
+IF ["%~nx1"]==["streaming_extractor_music.exe"] (
+	goto :runsvmmodels
+	
+) ELSE (
+	goto :runtensorflowmodels
+)
 
-:runmodels
+:runsvmmodels
+SET models=!models:%parentfolder%=!
+ECHO.
+ECHO Running profile: %2
+ECHO.
+IF NOT EXIST %4 mkdir %4
+"%~1" "%~3" "%~4\%~n2-out.json" "%~2" > nul 2>&1
+IF %ERRORLEVEL% EQU 0 (
+	IF EXIST "%~4" (
+		ECHO 	Done -^> "%~4\%~n2-out.json"
+	) ELSE (
+		CALL :error "	Processing failed. No output."
+	)
+) ELSE (
+	CALL :error " 	Unknown error."
+)
+ECHO.
+EXIT /B 0
+
+:runtensorflowmodels
 SET models=!models:%parentfolder%=!
 SET /A total=0
 SET /A error=0
@@ -27,11 +51,11 @@ FOR /R %2 %%f IN (*.pb) DO (
 	ECHO Running !file!
 	IF EXIST !out! (DEL /F /Q !out!)
 	IF ["%~nx1"]==["standard_tempocnn.exe"] (
-		%1 "%~3" !out! %%f > nul 2>&1
+		"%~1" "%~3" !out! %%f > nul 2>&1
 	) ELSE IF ["%~nx1"]==["streaming_tensorflowpredict.exe"] (
-		%1 "%~3" %%f !out! > nul 2>&1
+		"%~1" "%~3" %%f !out! > nul 2>&1
 	)  ELSE (
-		%1 %%f "%~3" !out! > nul 2>&1
+		"%~1" %%f "%~3" !out! > nul 2>&1
 	)
 	IF %ERRORLEVEL% EQU 0 (
 		IF EXIST !out! (
@@ -61,11 +85,15 @@ IF [!failed!]==[] (
 EXIT /B
 
 :usage
-ECHO Usage: run_models.bat ^<predictor^> ^<models^> ^<track^> ^<out^>
-ECHO 	^<predictor^>	- Executable path
-ECHO 	^<models^>	- Models folder path (use 'classifiers', not 'classification-heads' models)
-ECHO 	^<track^>		- Track file
-ECHO 	^<out^>		- Output folder path (must be different to models folder)
+ECHO Usage: run_models.bat ^<predictor^> ^<models/yaml profile^> ^<track^> ^<out^>
+ECHO 	^<predictor^>		- Executable path
+ECHO 	^<models/yaml profile^>	- Tensorflow: models folder path (use 'classifiers', not 'classification-heads' models).
+ECHO 				  Gaia: yaml profile file path, where SVM models folders may be speciffied.
+ECHO 	^<track^>			- Track file
+ECHO 	^<out^>			- Output folder path (must be different to models folder)
 ECHO.
-ECHO	Models may be downloaded from https://essentia.upf.edu/models/classifiers/
+ECHO	Models may be downloaded from:
+ECHO		https://essentia.upf.edu/models/classifiers/
+ECHO		https://essentia.upf.edu/models/feature-extractors/
+ECHO		https://essentia.upf.edu/svm_models/
 EXIT /B 1

@@ -9,6 +9,10 @@ IF [%2]==[] goto usage
 goto :runmodels
 
 :runmodels
+ECHO.
+ECHO ---------------------------
+ECHO PREDICT MODELS (TENSORFLOW)
+ECHO ---------------------------
 ECHO 	-^> run_models.bat %bin% %models% %1 %2
 run_models.bat %bin% %models% %1 %2
 EXIT /B %ERRORLEVEL%
@@ -16,7 +20,7 @@ EXIT /B %ERRORLEVEL%
 :usage
 ECHO Usage: run_tensorflow_models.bat ^<track^> ^<out^>
 ECHO 	^<track^>		- Track file
-ECHO 	^<out^>		- Output folder path (must be different to models folder)
+ECHO 	^<out^>		- Output file path
 ECHO.
 ECHO	No idea what this does xd
 ECHO	Models may be downloaded from:

@@ -9,6 +9,10 @@ IF [%2]==[] goto usage
 goto :runmodels
 
 :runmodels
+ECHO.
+ECHO ---------------------------
+ECHO MUSICNN MODELS (TENSORFLOW)
+ECHO ---------------------------
 ECHO 	-^> run_models.bat %bin% %models% %1 %2
 run_models.bat %bin% %models% %1 %2
 EXIT /B %ERRORLEVEL%
