@@ -1,6 +1,6 @@
 These are the required fonts for all my scripts: filename (font name)
 - Arial Unicode MS.ttf (Arial)
-- fontawesome-webfont.ttf (Font Awesome 4)
+- Font Awesome 4.ttf (Font Awesome 4)
 - seguisym.ttf (Segoe UI) (*)
 - tahoma.ttf (Tahoma)
 
